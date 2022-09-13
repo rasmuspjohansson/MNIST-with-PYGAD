@@ -1,0 +1,26 @@
+{
+ "num_generations":2000,
+"num_parents_mating":5,
+"sol_per_pop":100,
+"init_range_low":-0.1,
+"init_range_high":0.1,
+"parent_selection_type":"sss",
+"keep_parents":-1,
+"K_tournament":3,
+"crossover_type":"single_point",
+"crossover_probability":null,
+"mutation_type":"random",
+"mutation_percent_genes":10.0,
+"mutation_by_replacement":false,
+"random_mutation_min_val":-0.1,
+"random_mutation_max_val":0.1,
+
+"Use_cpu":false,
+"Folder":"large_population_sss",
+"Batchsize":50000,
+"learningrate_scedule":0,
+"plot_fitness":true,
+"Name":"large_population_sss",
+"comment":"Train a large population for a long time, evaluating each individual on the complete trainingset. Using steady state selection means that only a partion of the induviduals are replaced at a time. This should make it posible for good induviduals to survivive and be able to contribute over longer time "
+}
+
