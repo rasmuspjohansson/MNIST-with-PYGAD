@@ -1,6 +1,7 @@
 import numpy
 import pandas
 from pathlib import Path
+import matplotlib.pyplot as plt
 import json
 
 def logg_values_for_plots(train_fitness_over_time,valid_fitness_over_time,valid_accuracy_over_time,folder,name):
@@ -58,6 +59,8 @@ def plot(train_fitness_over_time,valid_fitness_over_time,valid_accuracy_over_tim
     :param test_accuracy:
     :return: path to plot file
     """
+    #make sure there are no old plots active
+    plt.clf()
 
 
     train_fitness_over_time=numpy.array(train_fitness_over_time)
@@ -70,7 +73,7 @@ def plot(train_fitness_over_time,valid_fitness_over_time,valid_accuracy_over_tim
     train_fitness=train_fitness.merge(valid_fitness, left_on='generation', right_on='generation')
     train_fitness = train_fitness.merge(valid_accuracy, left_on='generation', right_on='generation')
     fig= train_fitness.plot(x="generation").get_figure()
-    fig.suptitle(folder+"/"+name, fontsize=20)
+    fig.suptitle(folder+"/"+name, fontsize=10)
     plotfile_path ="./" + folder + "/" + name + "test_accuracy_"+str(test_accuracy)+".png"
     fig.savefig(plotfile_path)
     return plotfile_path

@@ -16,7 +16,7 @@
 "random_mutation_max_val":0.1,
 
 "Use_cpu":false,
-"Folder":"third_atempt",
+"Folder":"second_experiment",
 "Batchsize":50000,
 "learningrate_scedule":0,
 "plot_fitness":true,

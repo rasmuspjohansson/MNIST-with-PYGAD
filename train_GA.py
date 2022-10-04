@@ -19,9 +19,6 @@ from PIL import Image
 #Get more printouts by settign this to True
 verbose=False
 
-# Pygad use a lot of callbacks that are tricky to send data to as arguments.
-# We therfore need a lot of global variables. We store them all in a single dictionary
-global_variables ={"train_fitness_over_time":[],"valid_fitness_over_time":[],"valid_accuracy_over_time":[],"data_inputs":None,"data_outputs":None,"train_loaders_iter":None,"device":None,"loss_func":None,"last_generation_time":None,"other_parameters":{}}
 
 def ga_train(other_parameters,pygad_parameters, model, loaders):
     """
@@ -306,6 +303,10 @@ if __name__ == "__main__":
         #Make a folder for storing results
         os.makedirs(loaded_settings["Folder"], exist_ok=True)
         #Optimize with pygad
+        # Pygad use a lot of callbacks that are tricky to send data to as arguments.
+        # We therfore need a lot of global variables. We store them all in a single dictionary
+        global_variables ={"train_fitness_over_time":[],"valid_fitness_over_time":[],"valid_accuracy_over_time":[],"data_inputs":None,"data_outputs":None,"train_loaders_iter":None,"device":None,"loss_func":None,"last_generation_time":None,"other_parameters":{}}
+
         average_accuracy=main(pygad_parameters=pygad_parameters,other_parameters=other_parameters)
         print("average_accuracy :" + str(average_accuracy))
 

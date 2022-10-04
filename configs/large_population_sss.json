@@ -1,5 +1,5 @@
 {
- "num_generations":2000,
+ "num_generations":10000,
 "num_parents_mating":5,
 "sol_per_pop":100,
 "init_range_low":-0.1,
@@ -16,7 +16,7 @@
 "random_mutation_max_val":0.1,
 
 "Use_cpu":false,
-"Folder":"large_population_sss",
+"Folder":"third_experiment",
 "Batchsize":50000,
 "learningrate_scedule":0,
 "plot_fitness":true,
