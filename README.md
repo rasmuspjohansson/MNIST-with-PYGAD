@@ -17,11 +17,11 @@ python train_GA.py --config configs/default_settings_small_experiment.json
 
 
 2.
-###### Train a small population for a short while, using pygad default settings. Evaluating on the complete trainingset of 50000 images to get better fitness estimate. Initialize weights closer to zero in order to make network easier to train.
+###### Train for a short while, using pygad default settings. Evaluating on the complete trainingset of 50000 images to get better fitness estimate. Initialize weights closer to zero in order to make network easier to train.
 
 python train_GA.py --config configs/evaluation_on_complete_trainingset_better_initialization.json
 
 3.
-###### Train a large population for 2000 generations. Evaluating on the complete trainingset of 50000 images to get better fitness estimate. Initialize weights closer to zero in order to make network easier to train.
+###### Train for 10000 generations. Evaluating on the complete trainingset of 50000 images to get better fitness estimate. Initialize weights closer to zero in order to make network easier to train.
 
-python train_GA.py --config configs/large_population_sss.json
+python train_GA.py --config configs/10000_generations_ss.json
