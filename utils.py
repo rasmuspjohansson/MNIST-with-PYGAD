@@ -3,6 +3,7 @@ import pandas
 from pathlib import Path
 import matplotlib.pyplot as plt
 import json
+import argparse
 
 def logg_values_for_plots(train_fitness_over_time,valid_fitness_over_time,valid_accuracy_over_time,folder,name):
     """
@@ -48,6 +49,7 @@ def log_result(pygad_parameters,other_parameters,time,test_accuracy):
         json.dump(comined_dictionary, out_file, indent=6)
 
 def plot(train_fitness_over_time,valid_fitness_over_time,valid_accuracy_over_time,folder,name,test_accuracy):
+    
     """
     plot the training and valid fitness, together with the validations set accuracy, time series.
 
@@ -61,7 +63,7 @@ def plot(train_fitness_over_time,valid_fitness_over_time,valid_accuracy_over_tim
     """
     #make sure there are no old plots active
     plt.clf()
-
+    
 
     train_fitness_over_time=numpy.array(train_fitness_over_time)
     valid_fitness_over_time = numpy.array(valid_fitness_over_time)
@@ -77,6 +79,44 @@ def plot(train_fitness_over_time,valid_fitness_over_time,valid_accuracy_over_tim
     plotfile_path ="./" + folder + "/" + name + "test_accuracy_"+str(test_accuracy)+".png"
     fig.savefig(plotfile_path)
     return plotfile_path
+
+
+
+
+if __name__ == "__main__":
+    """
+    plot the result of an experiment
+    
+    """
+    usage_example="example usage: \n "+r"python utils.py --train_fitness .\medium_post_results\first_experiment\first_trytrain_fitness.csv --valid_fitness .\medium_post_results\first_experiment\first_tryvalid_fitness.csv --valid_accuracy .\medium_post_results\first_experiment\first_tryvalid_accuracy.csv"
+    # Initialize parser
+    parser = argparse.ArgumentParser(
+                                    epilog=usage_example,
+                                    formatter_class=argparse.RawDescriptionHelpFormatter)
+
+
+    parser.add_argument("--train_fitness", help="a path to csv file",required=True)
+    parser.add_argument("--valid_fitness", help="a path to csv file",required=True)
+    parser.add_argument("--valid_accuracy", help="a path to csv file",required=True)
+    parser.add_argument("--test_accuracy", help="e.g 92.0",required=True)
+    parser.add_argument("--name", help="e.g testplot",required=True)
+    parser.add_argument("--folder", help="e.g testfolder",required=True)
+    args = parser.parse_args()
+    
+    
+    valid_fitness = pandas.read_csv(args.valid_fitness)
+    train_fitness = pandas.read_csv(args.train_fitness)
+    valid_accuracy = pandas.read_csv(args.valid_accuracy)
+    
+    
+    #remove the index wich we dont want to plott  
+    valid_fitness= valid_fitness.drop(columns= ['Unnamed: 0']) 
+    train_fitness= train_fitness.drop(columns= ['Unnamed: 0']) 
+    valid_accuracy= valid_accuracy.drop(columns= ['Unnamed: 0']) 
+    
+ 
+    
+    plot(train_fitness_over_time=train_fitness.to_numpy(),valid_fitness_over_time=valid_fitness.to_numpy(),valid_accuracy_over_time=valid_accuracy.to_numpy(),folder=args.folder,name=args.name,test_accuracy=args.test_accuracy)
 
 
 

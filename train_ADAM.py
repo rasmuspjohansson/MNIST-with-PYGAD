@@ -67,5 +67,5 @@ def gradient_based_train(num_epochs, cnn, loaders,optimizer,loss_func):
 
 if __name__ == "__main__":
     cnn = model_lib.LeNet5(n_classes=10)
-    gradient_based_train(num_epochs=500,cnn=cnn,loaders=dataset_lib.get_loaders(train_batch_size=100),loss_func=nn.CrossEntropyLoss(),optimizer = optim.Adam(cnn.parameters(), lr=0.01))
+    gradient_based_train(num_epochs=10000,cnn=cnn,loaders=dataset_lib.get_loaders(train_batch_size=100),loss_func=nn.CrossEntropyLoss(),optimizer = optim.Adam(cnn.parameters(), lr=0.01))
 

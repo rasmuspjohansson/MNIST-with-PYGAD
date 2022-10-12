@@ -19,8 +19,8 @@
       "Batchsize": 50000,
       "learningrate_scedule": 0,
       "plot_fitness": true,
-      "Name": "large_population_sss",
-      "comment": "Train a large population for a long time, evaluating each individual on the complete trainingset. Using steady state selection means that only a partion of the induviduals are replaced at a time. This should make it posible for good induviduals to survivive and be able to contribute over longer time ",
+      "Name": "10000_generations_ss",
+      "comment": "Train for a long time, evaluating each individual on the complete trainingset. Using steady state selection means that only a partion of the induviduals are replaced at a time. This should make it posible for good induviduals to survivive and be able to contribute over longer time ",
       "time": "165238.6166923046",
       "test_accuracy": "0.9291693239795918"
 }
